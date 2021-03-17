@@ -1,0 +1,19 @@
+/* Write your T-SQL query statement below */
+/*Using Sub Query*/
+############## START QUERRY #################
+
+SELECT MAX(Salary) as SecondHighestSalary
+FROM Employee
+WHERE Salary< (SELECT MAX(Salary) FROM Employee)
+
+############## END QUERY ###################
+/*
+WITH RESULT as 
+(SELECT Salary, DENSE_RANK() OVER (ORDER BY Salary DESC) as DENSERANK
+FROM Employee)
+
+SELECT TOP 1 Salary AS SecondHighestSalary
+FROM RESULT
+WHERE RESULT.DENSERANK= 2
+*/
+
